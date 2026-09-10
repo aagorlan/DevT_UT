@@ -1,0 +1,242 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260911020932
+Username: DEVINORU\d.pavlov
+RunAs User: DEVINORU\d.pavlov
+Machine: 3D-1CSQL-01 (Microsoft Windows NT 6.3.9600.0)
+Host Application: powershell -ExecutionPolicy Bypass -File .\Diag-COMConnector.ps1 -Server 3d-1C.DEVINORU.DEVINO.LOCAL
+Process ID: 6936
+**********************
+
+==============================================================================
+  1. ОКРУЖЕНИЕ
+==============================================================================
+  Дата/время                       : 2026-09-11 02:09:32 +03:00
+  Компьютер                        : 3d-1CSQL-01.devinoru.devino.local
+  Домен                            : DEVINORU.DEVINO.LOCAL
+  ОС                               : Microsoft Windows Server 2012 R2 Standard 6.3.9600
+  Скрипт выполняется от            : DEVINORU\d.pavlov
+  Права администратора             : True
+  Разрядность процесса             : 64-bit
+  Разрядность ОС                   : 64-bit
+  Версия PowerShell                : 4.0
+
+==============================================================================
+  2. РЕГИСТРАЦИЯ 'V83.COMConnector' В ВЕТКЕ Registry64
+==============================================================================
+  CLSID                            : {181E893D-73A4-4722-B61D-D604B3D67D47}
+  AppID                            : <не задано>
+  InprocServer32                   : C:\Program Files\1cv8\8.3.27.2214\bin\comcntr.dll
+  LocalServer32                    : <не задано>
+  DllSurrogate                     : <не задано>
+  AuthenticationLevel              : <не задано>
+  Файл сервера                     : C:\Program Files\1cv8\8.3.27.2214\bin\comcntr.dll (существует, версия 8.3.27.2214, изменён 05/27/2026 20:54:16)
+
+  --- Identity (вкладка "Удостоверение" в dcomcnfg) ---
+      RunAs не задан -> "Запускающий пользователь" (The launching user).
+
+  --- LaunchPermission (Запуск и активация) ---
+      значение отсутствует -> используются машинные умолчания (см. раздел 5)
+
+  --- AccessPermission (Доступ) ---
+      значение отсутствует -> используются машинные умолчания (см. раздел 5)
+
+==============================================================================
+  2. РЕГИСТРАЦИЯ 'V83.COMConnector' В ВЕТКЕ Registry32
+==============================================================================
+  CLSID                            : {181E893D-73A4-4722-B61D-D604B3D67D47}
+  AppID                            : <не задано>
+  InprocServer32                   : <не задано>
+  LocalServer32                    : <не задано>
+  DllSurrogate                     : <не задано>
+  AuthenticationLevel              : <не задано>
+
+  --- Identity (вкладка "Удостоверение" в dcomcnfg) ---
+      RunAs не задан -> "Запускающий пользователь" (The launching user).
+
+  --- LaunchPermission (Запуск и активация) ---
+      значение отсутствует -> используются машинные умолчания (см. раздел 5)
+
+  --- AccessPermission (Доступ) ---
+      значение отсутствует -> используются машинные умолчания (см. раздел 5)
+
+==============================================================================
+  4. СОСТОЯНИЕ УЧЁТНЫХ ЗАПИСЕЙ ЗАПУСКА (RunAs)
+==============================================================================
+  Фиксированные учётные записи запуска не заданы -- проверять нечего.
+
+  --- Состав группы "Distributed COM Users" ---
+Alias name     Distributed COM Users
+Comment        Members are allowed to launch, activate and use Distributed COM objects on this machine.
+Members
+-------------------------------------------------------------------------------
+DEVINORU\USR1Cv8
+The command completed successfully.
+
+==============================================================================
+  5. МАШИННЫЕ ОГРАНИЧЕНИЯ COM (HKLM\SOFTWARE\Microsoft\Ole)
+==============================================================================
+  --- DefaultLaunchPermission ---
+      SDDL: O:BAG:BAD:(A;;CCDCLCSWRP;;;BA)(A;;CCDCLCSWRP;;;IU)(A;;CCDCLCSWRP;;;SY)
+      AccessAllowed BUILTIN\Administrators                        LocalLaunch, RemoteLaunch, LocalActivation, RemoteActivation
+      AccessAllowed NT AUTHORITY\INTERACTIVE                      LocalLaunch, RemoteLaunch, LocalActivation, RemoteActivation
+      AccessAllowed NT AUTHORITY\SYSTEM                           LocalLaunch, RemoteLaunch, LocalActivation, RemoteActivation
+
+  --- MachineLaunchRestriction ---
+      SDDL: O:BAG:BAD:(A;;CCDCLCSWRP;;;BA)(A;;CCDCSW;;;WD)(A;;CCDCLCSWRP;;;S-1-5-32-562)(A;;CCDCLCSWRP;;;LU)(A;;CCDCSW;;;AC)
+      AccessAllowed BUILTIN\Administrators                        LocalLaunch, RemoteLaunch, LocalActivation, RemoteActivation
+      AccessAllowed Everyone                                      LocalLaunch, LocalActivation
+      AccessAllowed BUILTIN\Distributed COM Users                 LocalLaunch, RemoteLaunch, LocalActivation, RemoteActivation
+      AccessAllowed BUILTIN\Performance Log Users                 LocalLaunch, RemoteLaunch, LocalActivation, RemoteActivation
+      AccessAllowed APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES LocalLaunch, LocalActivation
+
+
+PS>TerminatingError(Get-ItemProperty): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Property DefaultAccessPermission does not exist at path HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Ole."
+  --- DefaultAccessPermission ---
+      значение отсутствует -> используются машинные умолчания (см. раздел 5)
+
+  --- MachineAccessRestriction ---
+      SDDL: O:BAG:BAD:(A;;CCDCLC;;;WD)(A;;CCDCLC;;;AN)(A;;CCDCLC;;;S-1-5-32-562)(A;;CCDCLC;;;LU)(A;;CCDC;;;AC)
+      AccessAllowed Everyone                                      Execute, LocalAccess, RemoteAccess
+      AccessAllowed NT AUTHORITY\ANONYMOUS LOGON                  Execute, LocalAccess, RemoteAccess
+      AccessAllowed BUILTIN\Distributed COM Users                 Execute, LocalAccess, RemoteAccess
+      AccessAllowed BUILTIN\Performance Log Users                 Execute, LocalAccess, RemoteAccess
+      AccessAllowed APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Execute, LocalAccess
+
+  EnableDCOM                       : Y
+
+PS>TerminatingError(Get-ItemProperty): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Property LegacyAuthenticationLevel does not exist at path HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Ole."
+  LegacyAuthenticationLevel        : <нет>
+  LegacyImpersonationLevel         : 2
+
+==============================================================================
+  6. ПОПЫТКА СОЗДАНИЯ COM-ОБЪЕКТА
+==============================================================================
+  УСПЕХ: объект V83.COMConnector создан за 39 мс.
+  Тип объекта                      : System.__ComObject
+  Строка соединения при этом НЕ проверялась (метод Connect не вызывался).
+
+==============================================================================
+  7. ЖУРНАЛЫ СОБЫТИЙ ЗА ПОСЛЕДНИЕ 24 Ч.
+==============================================================================
+  --- System / DistributedCOM ---
+
+PS>TerminatingError(Get-WinEvent): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: No events were found that match the specified selection criteria."
+    нет событий или нет доступа: No events were found that match the specified selection criteria.
+
+  --- Security / 4625 (отказ входа) ---
+    2026-09-11 01:49:53  УЗ=3D-1CSQL-01\Administrator  LogonType=4  SubStatus=0xC000006A (неверный пароль)  Процесс=C:\Program Files\Veritas\Backup Exec\RAWS\beremote.exe
+    2026-09-11 01:49:39  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:48:40  УЗ=3D-1CSQL-01\Administrator  LogonType=4  SubStatus=0xC000006A (неверный пароль)  Процесс=C:\Program Files\Veritas\Backup Exec\RAWS\beremote.exe
+    2026-09-11 01:47:56  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:54  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:53  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:52  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:51  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:50  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:49  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:48  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:46  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:45  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:44  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:43  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:41  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:40  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:39  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:38  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:37  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:36  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:35  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:34  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:33  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+    2026-09-11 01:47:32  УЗ=SRV-BACKUP-02\Administrator  LogonType=3  SubStatus=0xC000006A (неверный пароль)  Процесс=-
+
+  --- Application: ошибки, упоминающие 1C / comcntr ---
+    2026-09-10 14:48:40  VSS  Id=8193
+
+==============================================================================
+  8. ДОСТУПНОСТЬ СЕРВЕРА 1С
+==============================================================================
+  Проверяемый хост                 : 3d-1C.DEVINORU.DEVINO.LOCAL
+  DNS                              : 10.17.150.70
+  Порт 1540   : открыт
+  Порт 1541   : открыт
+  Порт 1560   : ЗАКРЫТ/недоступен
+  Порт 1561   : открыт
+  Порт 1562   : открыт
+
+==============================================================================
+  9. ВЫЗЫВАЮЩИЕ ПРОЦЕССЫ
+==============================================================================
+  AppPool .NET v2.0                      Identity=ApplicationPoolIdentity   State=Started
+  AppPool .NET v2.0 Classic              Identity=ApplicationPoolIdentity   State=Started
+  AppPool .NET v4.5                      Identity=ApplicationPoolIdentity   State=Started
+  AppPool .NET v4.5 Classic              Identity=ApplicationPoolIdentity   State=Started
+  AppPool Classic .NET AppPool           Identity=ApplicationPoolIdentity   State=Started
+  AppPool DefaultAppPool                 Identity=ApplicationPoolIdentity   State=Started
+
+  --- Службы, работающие от доменных учётных записей ---
+
+Name                                    StartName                     State  
+----                                    ---------                     -----  
+MsDtsServer120                          DEVINORU\SQL1C_DBE            Running
+MSSQLSERVER                             DEVINORU\SQL1C_DBE            Running
+SQLSERVERAGENT                          DEVINORU\SQl1C_Agent          Running
+1C:Enterprise 8.3 Server Agent (x86-64) USR1Cv8@devinoru.devino.local Running
+  --- Запущенные процессы 1С / dllhost ---
+
+  Id ProcessName StartTime          
+  -- ----------- ---------          
+5308 dllhost     30.07.2026 18:37:01
+7672 dllhost     11.09.2026 2:09:33 
+8368 dllhost     11.09.2026 2:09:21 
+7016 ragent      10.09.2026 3:12:05 
+6664 rmngr       10.09.2026 3:12:09 
+7476 rphost      10.09.2026 3:12:21
+
+==============================================================================
+  ИТОГИ ДИАГНОСТИКИ
+==============================================================================
+  [INFO] Процесс 64-битный. Если вызывающее приложение 32-битное, повторите запуск в C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe
+  [OK] Ветка Registry64 : Identity = Запускающий пользователь. Пароль нигде не хранится, 0x8000401A по причине пароля здесь маловероятна.
+  [OK] Ветка Registry32 : Identity = Запускающий пользователь. Пароль нигде не хранится, 0x8000401A по причине пароля здесь маловероятна.
+  [OK] COM-объект V83.COMConnector создаётся успешно -- DCOM-активация работает под учётной записью DEVINORU\d.pavlov.
+  [FAIL] Отказ входа для 3D-1CSQL-01\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:49:53).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:49:39).
+  [FAIL] Отказ входа для 3D-1CSQL-01\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:48:40).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:56).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:54).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:53).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:52).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:51).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:50).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:49).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:48).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:46).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:45).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:44).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:43).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:41).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:40).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:39).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:38).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:37).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:36).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:35).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:34).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:33).
+  [FAIL] Отказ входа для SRV-BACKUP-02\Administrator : неверный пароль (событие 4625 от 09/11/2026 01:47:32).
+
+  ЧТО ДЕЛАТЬ ДАЛЬШЕ:
+   * Есть [FAIL] про Identity/пароль  -> dcomcnfg -> AppID -> Удостоверение: заново ввести пароль
+                                          или переключить на "Запускающий пользователь".
+   * Есть [FAIL] 0x80070005            -> добавить учётную запись вызывающего процесса
+                                          в Launch/Activation Permission.
+   * Есть [FAIL] про файл comcntr.dll  -> regsvr32 нужной версии платформы.
+   * Всё [OK], но приложение падает    -> запустите скрипт от имени учётной записи
+                                          вызывающего процесса и в нужной разрядности.
+
+**********************
+Windows PowerShell transcript end
+End time: 20260911020936
+**********************
