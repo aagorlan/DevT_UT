@@ -1,47 +1,48 @@
-## Где запускать — важное уточнение
-
-Ключевой момент, который часто путают: `Новый COMОбъект("V83.COMConnector")` создаёт объект **локально**, на той машине, где выполняется код. Обращение к серверу 1С (`3d-1C.DEVINORU.DEVINO.LOCAL`) происходит только внутри метода `Connect()`, до которого дело не дошло.
-
-Значит:
-
-**Запускать на машине-инициаторе** — там, где крутится код, вызывающий COMConnector: веб-сервер IIS, сервер обмена, машина с регламентным заданием, рабочая станция интегратора. Настройки DCOM правятся именно там. Если это тот же физический сервер, что и 1С, — совпадает, но проверять надо от роли «вызывающий».
-
-На сервере 1С (`3d-1C...`) скрипт имеет смысл прогнать вторым заходом, только чтобы убедиться, что порты кластера слушаются и служба жива. К ошибке 0x8000401A он отношения не имеет.
-
-## Как запускать
-
-Обычный прогон, от администратора:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\Diag-COMConnector.ps1 -Server 3d-1C.DEVINORU.DEVINO.LOCAL
-```
-
-Права администратора нужны для чтения журнала Security (события 4625 с расшифровкой причины отказа входа — самая ценная часть отчёта) и веток `HKLM\SOFTWARE\Microsoft\Ole`.
-
-**Если вызывающее приложение 32-битное** (частый случай — старые обработки, COM из 32-битного процесса), повторите тем же файлом:
-
-```powershell
-C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -File .\Diag-COMConnector.ps1
-```
-
-Скрипт читает обе ветки реестра сразу, но реальную попытку создания объекта делает в своей разрядности — поэтому два прогона дают полную картину.
-
-**Самый показательный вариант** — запуск от имени той же учётной записи, под которой работает вызывающий процесс. Иначе тест создания объекта может пройти успешно у администратора и падать у пула IIS:
-
-```powershell
-runas /user:DEVINO\СервисныйПользователь "powershell -ExecutionPolicy Bypass -File C:\temp\Diag-COMConnector.ps1"
-```
-
-Либо через PsExec под системной/сервисной учёткой, если пароль неизвестен.
-
-## Что скрипт покажет
-
-Отчёт пишется в `%TEMP%\comconnector-diag_<хост>_<дата>.txt`, его можно приложить к ответу на письмо. Внизу — блок «ИТОГИ» с метками FAIL/WARN/OK.
-
-Ключевые строки, ради которых всё затевалось:
-- **Identity (RunAs)** для AppID — задана ли фиксированная учётка, «Интерактивный пользователь» или «Запускающий пользователь»;
-- **состояние этой учётки в AD** — заблокирована, отключена, просрочен ли пароль, когда истекает;
-- **событие 4625** с расшифровкой SubStatus: `0xC000006A` — неверный пароль, `0xC0000234` — блокировка, `0xC0000071` — просрочен;
-- **HRESULT** реальной попытки создания объекта с готовой расшифровкой.
-
-Если в итогах будет `[FAIL] Пароль учётной записи ... ПРОСРОЧЕН` плюс `[FAIL] 0x8000401A` — доказательство собрано, задача уходит администратору без дальнейших разбирательств.
+At C:\Temp\DevT\Diag-COMConnector.ps1:106 char:22
++     if (-not $Bytes) {
++                      ~
+Missing closing '}' in statement block.
+At C:\Temp\DevT\Diag-COMConnector.ps1:102 char:22
++ function Show-ComAcl {
++                      ~
+Missing closing '}' in statement block.
+At C:\Temp\DevT\Diag-COMConnector.ps1:200 char:162
++ ... .LastWriteTime))"
++                    ~
+Unexpected token ')' in expression or statement.
+At C:\Temp\DevT\Diag-COMConnector.ps1:202 char:53
++                 Write-Kv 'Р¤Р°Р№Р> С?РчС?Р?РчС?Р°' "$path -- Р¤Р?РTР> Р?Р Р?
+Р?Р ...
++                                                     ~~~~~
+Unexpected token '$path' in expression or statement.
+At C:\Temp\DevT\Diag-COMConnector.ps1:202 char:62
++                 Write-Kv 'Р¤Р°Р№Р> С?РчС?Р?РчС?Р°' "$path -- Р¤Р?РTР> Р?Р Р?
+Р?Р ...
++                                                              ~~~~~~~~
+Unexpected token 'Р¤Р?РTР>' in expression or statement.
+At C:\Temp\DevT\Diag-COMConnector.ps1:209 char:94
++ ...  dcomcnfg) ---'
++                    ~
+Missing closing ')' in expression.
+At C:\Temp\DevT\Diag-COMConnector.ps1:215 char:107
++ ... Р?Р°С'РчР>С?).'
++                    ~
+Missing closing ')' in expression.
+At C:\Temp\DevT\Diag-COMConnector.ps1:218 char:96
++ ... workService$') {
++                    ~
+Unexpected token '{' in expression or statement.
+At C:\Temp\DevT\Diag-COMConnector.ps1:229 char:119
++ ... єС'РёР?Р°С┼РёС?)'
++                    ~
+Unexpected token ')' in expression or statement.
+At C:\Temp\DevT\Diag-COMConnector.ps1:231 char:67
++     Show-ComAcl -Bytes $reg.AccessPermission -Kind Access -Label 'AccessPermi
+ssi ...
++                                                                   ~~~~~~~~~~~
+~~~
+Unexpected token 'AccessPermission' in expression or statement.
+Not all parse errors were reported.  Correct the reported errors and try again.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordEx
+   ception
+    + FullyQualifiedErrorId : MissingEndCurlyBrace
